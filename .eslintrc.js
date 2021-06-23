@@ -1,0 +1,35 @@
+module.exports = {
+  root: true,
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 2021,
+    sourceType: 'module',
+  },
+  extends: ['eslint-config-prettier', '@react-native-community'],
+
+  rules: {
+    'no-case-declarations': 'off',
+    'consistent-return': 'off',
+    'prettier/prettier': 'off',
+    'arrow-body-style': 'off',
+    camelcase: 'off',
+    'react/prop-types': 'off',
+    'react/jsx-filename-extension': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    'react/no-unused-prop-types': 'off',
+    'react/react-in-jsx-scope': 'off',
+    'react/require-default-props': 'off',
+    'react-hooks/rules-of-hooks': 'warn',
+    'react-hooks/exhaustive-deps': 'warn',
+    quotes: 'off',
+    'no-unused-vars': 'off',
+    'comma-dangle': 'off',
+    'react-native/no-inline-styles': 'off',
+    'no-bitwise': 'off',
+    'no-undef': 2,
+    'no-use-before-define': 'off',
+    curly: 'off',
+  },
+};
