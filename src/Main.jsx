@@ -3,16 +3,23 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { Provider } from 'react-redux';
+import { Appearance, AppearanceProvider, useColorScheme } from 'react-native-appearance';
 
 import store from 'src/redux/store';
 import LoggedOutNavigator from 'src/navigators/LoggedOutNavigator';
 
 export default function Main() {
+  const subscription = Appearance.addChangeListener(({ colorScheme }) => {
+    console.log('Appearance mode:', colorScheme);
+  });
+
   return (
     <Provider store={store}>
-      <NavigationContainer>
-        <LoggedOutNavigator />
-      </NavigationContainer>
+      <AppearanceProvider>
+        <NavigationContainer>
+          <LoggedOutNavigator />
+        </NavigationContainer>
+      </AppearanceProvider>
     </Provider>
   );
 }
