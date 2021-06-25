@@ -1,85 +1,139 @@
-// import axios from "axios";
-//
+import axios from 'axios';
+import dayjs from 'dayjs';
+import { Alert, Platform } from 'react-native';
+import * as RNLocalize from 'react-native-localize';
 
-// const BASEURL =
-//   process.env.NODE_ENV === "production"
-//     ? "https://4efqqh8pld.execute-api.us-east-2.amazonaws.com/prod"
-//     : "http://localhost:3066";
+import { currentBuildNo } from '../constants/buildNo';
 
-// const DEFAULT_TIMEOUT = 20000;
+const BASEURL =
+  process.env.NODE_ENV === 'production'
+    ? 'https://4efqqh8pld.execute-api.us-east-2.amazonaws.com/prod'
+    : 'http://localhost:3066';
 
-// const devMode = process.env.NODE_ENV === "development";
+const defaultUid = '';
+const currentTimezone = RNLocalize.getTimeZone();
 
-// const defaultPrivateHeaders = {
-//   Accept: `*/*`,
-//   "Content-Type": `application/json`,
-//   Authorization: `Bearer ${parseCookies(null).accesstoken}`,
-// };
+const devMode = process.env.BUILD_ENV === 'development';
 
-// const defaultPublicHeaders = {
-//   Accept: `*/*`,
-//   "Content-Type": `application/json`,
-// };
+const defaultPrivateHeaders = {
+  Accept: `*/*`,
+  'Content-Type': `application/json`,
+  Authorization: `Bearer ${defaultUid}`,
+  currentBuildNo: currentBuildNo,
+  timezone: currentTimezone,
+};
 
-// const onError = (e, url, method, data) => {
-//   let errorMessage = "An unknown error occurred.\nPlease contact the customer service.";
-//   if (e.response) {
-//     devMode && console.log(`[${method.toUpperCase()}] [RESPONSE] ${url} ${e.response.status}`, e.response.data);
+const defaultPublicHeaders = {
+  Accept: `*/*`,
+  'Content-Type': `application/json`,
+  currentBuildNo: currentBuildNo,
+};
 
-//     if (e.response?.data?.userMessage) {
-//       errorMessage = e.response.data.userMessage;
-//     }
-//   } else {
-//     devMode && console.log(`[${method.toUpperCase()}] [RESPONSE]`, url, e);
-//   }
+const onError = (e, url, method, data) => {
+  let errorMessage =
+    'An unknown error occurred.\nPlease contact the customer service.';
+  if (e.response) {
+    devMode &&
+      console.log(
+        '[🔴 RES]',
+        method.toUpperCase(),
+        url,
+        data,
+        `message: ${e.message}`,
+      );
 
-//   toast.error(errorMessage);
-//   return {
-//     err: true,
-//     errorMessage,
-//   };
-// };
+    if (e.response?.data?.userMessage) {
+      errorMessage = e.response.data.userMessage;
+    }
+  } else {
+    devMode &&
+      console.log(
+        '[🔴 RES]',
+        method.toUpperCase(),
+        url,
+        data,
+        `message: ${e.message}`,
+      );
+  }
 
-// const sendRequest = (url, params, method, headers, isPrivate) => {
-//   const defaultHeaders = isPrivate ? defaultPrivateHeaders : defaultPublicHeaders;
-//   devMode && console.log("[Request]", method.toUpperCase(), url, params);
-//   return axios[method](BASEURL + url, {
-//     headers: { ...defaultHeaders, ...headers },
-//     params,
-//   })
-//     .then((response) => {
-//       devMode && console.log("[Response]", method.toUpperCase(), url, response.data);
+  Alert.alert(null, errorMessage, [{ text: 'Confirm' }]);
+  return {
+    err: true,
+    errorMessage,
+  };
+};
 
-//       return response.data;
-//     })
-//     .catch((e) => onError(e, url, method, params));
-// };
+const sendRequest = (url, params, method, headers, isPrivate) => {
+  const now = dayjs();
 
-// const sendRequestForData = (url, data, method, headers, isPrivate) => {
-//   const defaultHeaders = isPrivate ? defaultPrivateHeaders : defaultPublicHeaders;
-//   devMode && console.log("[Request]", method.toUpperCase(), url, data);
+  const defaultHeaders = isPrivate
+    ? defaultPrivateHeaders
+    : defaultPublicHeaders;
+  devMode &&
+    console.log(`[🟡 REQ ${Platform.OS}]`, method.toUpperCase(), url, params);
+  return axios[method](BASEURL + url, {
+    headers: { ...defaultHeaders, ...headers },
+    params,
+  })
+    .then((response) => {
+      devMode &&
+        console.log(
+          `[🟢 RES ${Platform.OS}] ${dayjs()
+            .diff(now, 'millisecond')
+            .toString()}`,
+          method.toUpperCase(),
+          url,
+        );
 
-//   return axios[method](BASEURL + url, data, {
-//     headers: { ...defaultHeaders, ...headers },
-//   })
-//     .then((response) => {
-//       devMode && console.log("[Response]", method.toUpperCase(), url, response.data);
+      return response.data;
+    })
+    .catch((e) => onError(e, url, method, params));
+};
 
-//       return response.data;
-//     })
-//     .catch((e) => onError(e, url, method, data));
-// };
+const sendRequestForData = (url, data, method, headers, isPrivate) => {
+  const now = dayjs();
 
-// export const privateAPI = {
-//   get: (url, params, headers) => sendRequest(url, params, "get", headers, true),
-//   post: (url, data, headers) => sendRequestForData(url, data, "post", headers, true),
-//   put: (url, data, headers) => sendRequestForData(url, data, "put", headers, true),
-//   delete: (url, params, headers) => sendRequest(url, params, "delete", headers, true),
-// };
+  const defaultHeaders = isPrivate
+    ? defaultPrivateHeaders
+    : defaultPublicHeaders;
+  devMode &&
+    console.log(`[🟡 REQ ${Platform.OS}]`, method.toUpperCase(), url, data);
 
-// export const publicAPI = {
-//   get: (url, params, headers) => sendRequest(url, params, "get", headers, false),
-//   post: (url, data, headers) => sendRequestForData(url, data, "post", headers, false),
-//   put: (url, data, headers) => sendRequestForData(url, data, "put", headers, false),
-//   delete: (url, params, headers) => sendRequest(url, params, "delete", headers, false),
-// };
+  return axios[method](BASEURL + url, data, {
+    headers: { ...defaultHeaders, ...headers },
+  })
+    .then((response) => {
+      devMode &&
+        console.log(
+          `[🟢 RES ${Platform.OS}] ${dayjs()
+            .diff(now, 'millisecond')
+            .toString()}`,
+          method.toUpperCase(),
+          url,
+        );
+
+      return response.data;
+    })
+    .catch((e) => onError(e, url, method, data));
+};
+
+export const privateAPI = {
+  get: (url, params, headers) => sendRequest(url, params, 'get', headers, true),
+  post: (url, data, headers) =>
+    sendRequestForData(url, data, 'post', headers, true),
+  put: (url, data, headers) =>
+    sendRequestForData(url, data, 'put', headers, true),
+  delete: (url, params, headers) =>
+    sendRequest(url, params, 'delete', headers, true),
+};
+
+export const publicAPI = {
+  get: (url, params, headers) =>
+    sendRequest(url, params, 'get', headers, false),
+  post: (url, data, headers) =>
+    sendRequestForData(url, data, 'post', headers, false),
+  put: (url, data, headers) =>
+    sendRequestForData(url, data, 'put', headers, false),
+  delete: (url, params, headers) =>
+    sendRequest(url, params, 'delete', headers, false),
+};

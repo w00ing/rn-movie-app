@@ -16,6 +16,7 @@ export default function Main() {
     <Provider store={store}>
       <AppearanceProvider>
         <RootNavigator />
+        <StatusBar style="light" />
       </AppearanceProvider>
     </Provider>
   );
