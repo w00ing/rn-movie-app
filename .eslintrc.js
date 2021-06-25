@@ -16,6 +16,7 @@ module.exports = {
     'arrow-body-style': 'off',
     camelcase: 'off',
     'react/prop-types': 'off',
+    'react/self-closing-comp': 'off',
     'react/jsx-filename-extension': 'off',
     'react/jsx-props-no-spreading': 'off',
     'react/no-unused-prop-types': 'off',

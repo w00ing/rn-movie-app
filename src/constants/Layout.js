@@ -69,130 +69,130 @@ export const BOTTOM_PADDING = Platform.OS === 'ios' ? (isIphoneXorAbove() ? 25 :
 
 const statusBarHeight = Platform.OS === 'ios' ? (isIphoneXorAbove() ? 44 : 20) : 0; //StatusBar.currentHeight;
 
-const navigationOptions = {
-  headerLayoutPreset: 'left',
-  defaultNavigationOptions: {
-    headerTintColor: Colors.mainBlack,
-    headerTitleStyle: {
-      // fontFamily: 'bold',
-      fontSize: 16,
-      marginHorizontal: 0,
-      paddingTop: 0,
-      paddingBottom: 0,
-      // backgroundColor: 'yellow',
-    },
-    headerTitleContainerStyle: {
-      // backgroundColor: 'blue',
-      marginLeft: Platform.OS === 'ios' ? 13 : 0,
-      marginRight: Platform.OS === 'ios' ? 13 : 0,
-      paddingLeft: Platform.OS === 'ios' ? 13 : 0,
-    },
-    headerLeftContainerStyle: {
-      // backgroundColor: 'green',
-      // marginRight: 10,
-    },
-    headerRightContainerStyle: {
-      // backgroundColor: 'green',
-    },
-    headerStyle: {
-      backgroundColor: Colors.backgroundColor,
-      shadowColor: 'transparent',
-      borderBottomWidth: 0,
-      elevation: 0,
-    },
-  },
-};
+// const navigationOptions = {
+//   headerLayoutPreset: 'left',
+//   defaultNavigationOptions: {
+//     headerTintColor: Colors.mainBlack,
+//     headerTitleStyle: {
+//       // fontFamily: 'bold',
+//       fontSize: 16,
+//       marginHorizontal: 0,
+//       paddingTop: 0,
+//       paddingBottom: 0,
+//       // backgroundColor: 'yellow',
+//     },
+//     headerTitleContainerStyle: {
+//       // backgroundColor: 'blue',
+//       marginLeft: Platform.OS === 'ios' ? 13 : 0,
+//       marginRight: Platform.OS === 'ios' ? 13 : 0,
+//       paddingLeft: Platform.OS === 'ios' ? 13 : 0,
+//     },
+//     headerLeftContainerStyle: {
+//       // backgroundColor: 'green',
+//       // marginRight: 10,
+//     },
+//     headerRightContainerStyle: {
+//       // backgroundColor: 'green',
+//     },
+//     headerStyle: {
+//       backgroundColor: Colors.backgroundColor,
+//       shadowColor: 'transparent',
+//       borderBottomWidth: 0,
+//       elevation: 0,
+//     },
+//   },
+// };
 
-const themeStyle = StyleSheet.create({
-  box: {
-    padding: defaultPaddingL,
-    backgroundColor: 'white',
-  },
-  shadow: {
-    elevation: 3,
-    shadowOpacity: 0.2,
-    // shadowColor:Colors,
-    shadowRadius: 2,
-    shadowOffset: {
-      height: 2,
-      width: 0,
-    },
-  },
-  fullWidthButtonContainer: {
-    backgroundColor: Colors.buttonColor,
-    height: 60,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  fullWidthButtonText: {
-    textAlign: 'center',
-    includeFontPadding: false,
-    fontSize: 16,
-    textAlignVertical: 'center',
-    fontFamily: 'bold',
-    color: 'white',
-  },
-  h1Text: {
-    fontSize: 20,
-  },
-  h2Text: {
-    fontSize: 18,
-  },
-  h3Text: {
-    fontSize: 16,
-    fontFamily: 'bold',
-  },
-  body: {
-    fontSize: 14,
-  },
-  buttonText: {
-    color: Colors.buttonColor,
-    fontFamily: 'bold',
-  },
-  descriptionGreyText: {
-    fontSize: 12,
-    color: Colors.fontGrey,
-  },
+// const themeStyle = StyleSheet.create({
+//   box: {
+//     padding: defaultPaddingL,
+//     backgroundColor: 'white',
+//   },
+//   shadow: {
+//     elevation: 3,
+//     shadowOpacity: 0.2,
+//     // shadowColor:Colors,
+//     shadowRadius: 2,
+//     shadowOffset: {
+//       height: 2,
+//       width: 0,
+//     },
+//   },
+//   fullWidthButtonContainer: {
+//     backgroundColor: Colors.buttonColor,
+//     height: 60,
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//   },
+//   fullWidthButtonText: {
+//     textAlign: 'center',
+//     includeFontPadding: false,
+//     fontSize: 16,
+//     textAlignVertical: 'center',
+//     fontFamily: 'bold',
+//     color: 'white',
+//   },
+//   h1Text: {
+//     fontSize: 20,
+//   },
+//   h2Text: {
+//     fontSize: 18,
+//   },
+//   h3Text: {
+//     fontSize: 16,
+//     fontFamily: 'bold',
+//   },
+//   body: {
+//     fontSize: 14,
+//   },
+//   buttonText: {
+//     color: Colors.buttonColor,
+//     fontFamily: 'bold',
+//   },
+//   descriptionGreyText: {
+//     fontSize: 12,
+//     color: Colors.fontGrey,
+//   },
 
-  devMessageText: {
-    fontSize: 12,
-    color: Colors.notificationRed,
-  },
+//   devMessageText: {
+//     fontSize: 12,
+//     color: Colors.notificationRed,
+//   },
 
-  navigationHeaderContainer: {
-    // backgroundColor: Colors.mainColor,
-    // backgroundColor: 'white',
-    paddingTop: statusBarHeight,
-    paddingHorizontal: defaultHorizontalMargin,
-    height: 40 + statusBarHeight,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
+//   navigationHeaderContainer: {
+//     // backgroundColor: Colors.mainColor,
+//     // backgroundColor: 'white',
+//     paddingTop: statusBarHeight,
+//     paddingHorizontal: defaultHorizontalMargin,
+//     height: 40 + statusBarHeight,
+//     flexDirection: 'row',
+//     alignItems: 'center',
+//     justifyContent: 'space-between',
+//   },
 
-  moduleHeaderContainer: {
-    backgroundColor: '#BCBCBC',
-    paddingVertical: DEFAULT_MARGIN / 4,
-    paddingHorizontal: DEFAULT_MARGIN,
-  },
-  moduleHeaderContainerHorizontal: {
-    backgroundColor: '#BCBCBC',
-    paddingVertical: DEFAULT_MARGIN / 4,
-    paddingHorizontal: DEFAULT_MARGIN,
-    alignItems: 'center',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  moduleHeaderText: {
-    color: 'white',
-    fontSize: 10,
-    fontFamily: 'bold',
-  },
-  moduleBodyContainer: {
-    paddingVertical: WIDTH_UNIT * 25,
-    paddingHorizontal: DEFAULT_MARGIN,
-  },
-});
+//   moduleHeaderContainer: {
+//     backgroundColor: '#BCBCBC',
+//     paddingVertical: DEFAULT_MARGIN / 4,
+//     paddingHorizontal: DEFAULT_MARGIN,
+//   },
+//   moduleHeaderContainerHorizontal: {
+//     backgroundColor: '#BCBCBC',
+//     paddingVertical: DEFAULT_MARGIN / 4,
+//     paddingHorizontal: DEFAULT_MARGIN,
+//     alignItems: 'center',
+//     flexDirection: 'row',
+//     justifyContent: 'space-between',
+//   },
+//   moduleHeaderText: {
+//     color: 'white',
+//     fontSize: 10,
+//     fontFamily: 'bold',
+//   },
+//   moduleBodyContainer: {
+//     paddingVertical: WIDTH_UNIT * 25,
+//     paddingHorizontal: DEFAULT_MARGIN,
+//   },
+// });
 
 export default {
   window: {
@@ -200,7 +200,7 @@ export default {
     height,
   },
   keyboardVerticalOffset,
-  themeStyle,
+  // themeStyle,
   defaultRadius,
   defaultHorizontalMargin,
   defaultPaddingXS,
@@ -213,7 +213,7 @@ export default {
 
   defaultBorderRadius,
 
-  navigationOptions,
+  // navigationOptions,
   defaultPadding13,
   defaultPadding27,
   defaultPadding53,

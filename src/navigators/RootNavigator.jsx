@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 import { NavigationContainer } from '@react-navigation/native';
-import { useRef } from 'react';
-
-import LoggedOutNavigator from 'src/navigators/LoggedOutNavigator';
+import StackNavigator from './StackNavigator';
+import TabNavigator from './TabNavigator';
 
 let devMode = false;
 devMode = true;
@@ -29,7 +28,7 @@ export default function RootNavigator(props) {
         routeNameRef.current = currentRouteName;
       }}
     >
-      <LoggedOutNavigator />
+      <StackNavigator />
     </NavigationContainer>
   );
 }
