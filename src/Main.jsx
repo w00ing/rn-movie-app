@@ -7,6 +7,7 @@ import { Appearance, AppearanceProvider, useColorScheme } from 'react-native-app
 
 import store from 'src/redux/store';
 import LoggedOutNavigator from 'src/navigators/LoggedOutNavigator';
+import RootNavigator from 'src/navigators/RootNavigator';
 
 export default function Main() {
   const subscription = Appearance.addChangeListener(({ colorScheme }) => {
@@ -16,9 +17,10 @@ export default function Main() {
   return (
     <Provider store={store}>
       <AppearanceProvider>
-        <NavigationContainer>
+        <RootNavigator />
+        {/* <NavigationContainer>
           <LoggedOutNavigator />
-        </NavigationContainer>
+        </NavigationContainer> */}
       </AppearanceProvider>
     </Provider>
   );
