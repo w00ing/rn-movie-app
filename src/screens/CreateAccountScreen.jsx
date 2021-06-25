@@ -10,7 +10,6 @@ import {
   Modal,
   ActivityIndicator,
 } from 'react-native';
-import Colors from 'src/constants/Colors';
 
 export default function CreateAccountScreen(props) {
   const handleGoToLoginScreen = () => {

@@ -11,7 +11,6 @@ import {
   Modal,
   ActivityIndicator,
 } from 'react-native';
-import Colors from 'src/constants/Colors';
 
 export default function WelcomeScreen(props) {
   const handleGoToCreateAccountScreen = () => {
@@ -27,6 +26,9 @@ export default function WelcomeScreen(props) {
       <Text>WelcomeScreen</Text>
       <TouchableOpacity onPress={handleGoToCreateAccountScreen}>
         <Text>Go to Create Account</Text>
+        <Text>Hello</Text>
+        <Text>Hello</Text>
+        <Text>Hello</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={handleGoToLoginScreen}>
         <Text>Go to Login screen</Text>
