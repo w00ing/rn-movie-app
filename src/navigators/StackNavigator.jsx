@@ -16,7 +16,7 @@ export default function StackNavigator(props) {
       }}
     >
       <Stack.Screen name="TabNavigator" component={TabNavigator} />
-      <Stack.Screen name="DetailScreen" component={DetailScreen} />
+      <Stack.Screen name="DetailScreen" component={DetailScreen} options={{ title: 'Detail' }} />
     </Stack.Navigator>
   );
 }

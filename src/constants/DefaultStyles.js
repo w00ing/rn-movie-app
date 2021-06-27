@@ -1,4 +1,4 @@
-import { DEFAULT_MARGIN, WIDTH_UNIT } from "./Layout";
+import { DEFAULT_MARGIN, WU } from './Layout';
 
 export const Elevation = {
   boxShadow100: {
@@ -9,10 +9,9 @@ export const Elevation = {
   },
 };
 
-
 export default {
   container: {
     flex: 1,
-    marginHorizontal: DEFAULT_MARGIN
-  }
-}
+    marginHorizontal: DEFAULT_MARGIN,
+  },
+};

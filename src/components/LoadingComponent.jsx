@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import {
   Alert,
   StyleSheet,
@@ -12,11 +12,12 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import { LightColors, DarkColors } from 'src/constants/Colors';
+import DefaultStyles from 'src/constants/DefaultStyles';
 
-export default function FavoritesScreen() {
+export default function LoadingComponent(props) {
   return (
     <View>
-      <Text>FavoritesScreen</Text>
+      <Text>LoadingComponent</Text>
     </View>
   );
 }

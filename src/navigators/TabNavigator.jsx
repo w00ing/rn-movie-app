@@ -5,17 +5,29 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 
 import MovieScreen from 'src/screens/MovieScreen';
-import FavoritesScreen from 'src/screens/FavoritesScreen';
+import DiscoveryScreen from 'src/screens/DiscoveryScreen';
 import SearchScreen from 'src/screens/SearchScreen';
 import TvScreen from 'src/screens/TvScreen';
 
 const Tab = createBottomTabNavigator();
 
 export default function TabNavigator(props) {
-  const routeName = getFocusedRouteNameFromRoute(props.route);
+  const getHeaderTitle = (route) => {
+    const routeName = getFocusedRouteNameFromRoute(props.route);
+    switch (routeName) {
+      case 'MovieScreen':
+        return 'Movies';
+      case 'TvScreen':
+        return 'Shows';
+      case 'SearchScreen':
+        return 'Search';
+      case 'DiscoveryScreen':
+        return 'Discovery';
+    }
+  };
 
   useLayoutEffect(() => {
-    props.navigation.setOptions({ title: routeName || 'MovieScreen' });
+    props.navigation.setOptions({ title: getHeaderTitle(props.route) || 'Movies' });
   }, [props.route]);
 
   return (
@@ -33,7 +45,7 @@ export default function TabNavigator(props) {
             case 'SearchScreen':
               iconName += 'search';
               break;
-            case 'FavoritesScreen':
+            case 'DiscoveryScreen':
               iconName += 'heart';
               break;
           }
@@ -48,10 +60,10 @@ export default function TabNavigator(props) {
         },
       }}
     >
-      <Tab.Screen name="MovieScreen" component={MovieScreen} />
-      <Tab.Screen name="TvScreen" component={TvScreen} />
-      <Tab.Screen name="SearchScreen" component={SearchScreen} />
-      <Tab.Screen name="FavoritesScreen" component={FavoritesScreen} />
+      <Tab.Screen name="MovieScreen" component={MovieScreen} options={{ title: 'Movies' }} />
+      <Tab.Screen name="TvScreen" component={TvScreen} options={{ title: 'Shows' }} />
+      <Tab.Screen name="SearchScreen" component={SearchScreen} options={{ title: 'Search' }} />
+      <Tab.Screen name="DiscoveryScreen" component={DiscoveryScreen} options={{ title: 'Discovery' }} />
     </Tab.Navigator>
   );
 }

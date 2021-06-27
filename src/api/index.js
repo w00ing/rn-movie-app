@@ -5,20 +5,19 @@ import * as RNLocalize from 'react-native-localize';
 
 import { currentBuildNo } from '../constants/buildNo';
 
-const BASEURL =
-  process.env.NODE_ENV === 'production'
-    ? 'https://4efqqh8pld.execute-api.us-east-2.amazonaws.com/prod'
-    : 'http://localhost:3066';
+const BASEURL = 'https://api.themoviedb.org/3';
 
-const defaultUid = '';
 const currentTimezone = RNLocalize.getTimeZone();
+
+const theMovieDBApiKey =
+  'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1MGJiMjZhODRlNWU3YjkwNzRhNmRhNGY2NDg4MWMxYiIsInN1YiI6IjVkMjYxOGZlYTY5OGNmNTJlYmE2YzRkMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.lpJV17TkyG4-aIjtUkC9ozKUH7rn3-Piir3jf8bgMWM';
 
 const devMode = process.env.BUILD_ENV === 'development';
 
 const defaultPrivateHeaders = {
   Accept: `*/*`,
   'Content-Type': `application/json`,
-  Authorization: `Bearer ${defaultUid}`,
+  Authorization: `Bearer ${theMovieDBApiKey}`,
   currentBuildNo: currentBuildNo,
   timezone: currentTimezone,
 };
@@ -26,7 +25,9 @@ const defaultPrivateHeaders = {
 const defaultPublicHeaders = {
   Accept: `*/*`,
   'Content-Type': `application/json`,
+  Authorization: `Bearer ${theMovieDBApiKey}`,
   currentBuildNo: currentBuildNo,
+  timezone: currentTimezone,
 };
 
 const onError = (e, url, method, data) => {

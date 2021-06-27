@@ -4,10 +4,10 @@ import Colors from './Colors';
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 export const WIDTH = width;
-export const WIDTH_UNIT = width / 375;
+export const WU = width / 375;
 export const HEIGHT = height;
-export const DEFAULT_MARGIN = WIDTH_UNIT * 20;
-const defaultHorizontalMargin = WIDTH_UNIT * 20;
+export const DEFAULT_MARGIN = WU * 20;
+const defaultHorizontalMargin = WU * 20;
 const defaultPaddingXS = width * 0.01;
 const defaultPaddingS = width * 0.02;
 const defaultPaddingM = width * 0.04;
@@ -189,7 +189,7 @@ const statusBarHeight = Platform.OS === 'ios' ? (isIphoneXorAbove() ? 44 : 20) :
 //     fontFamily: 'bold',
 //   },
 //   moduleBodyContainer: {
-//     paddingVertical: WIDTH_UNIT * 25,
+//     paddingVertical: WU * 25,
 //     paddingHorizontal: DEFAULT_MARGIN,
 //   },
 // });
