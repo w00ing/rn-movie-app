@@ -1,25 +1,9 @@
-import React from 'react';
-import { useState } from 'react';
-import {
-  Alert,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  TouchableHighlight,
-  TouchableWithoutFeedback,
-  View,
-  Modal,
-  ActivityIndicator,
-  ScrollView,
-} from 'react-native';
+import React, { useState } from 'react';
 import { movieApi, tvApi } from 'src/api/api';
-import SearchInputComponent from 'src/components/search/SearchInputComponent';
 import HorizontalSiderComponent from 'src/components/HorizontalSiderComponent';
-import { LightColors, DarkColors } from 'src/constants/Colors';
-import HorizontalLayoutComponent from 'src/components/HorizontalLayoutComponent';
-import VerticalLayoutComponent from 'src/components/VerticalLayoutComponent';
 import ScrollContainerComponent from 'src/components/ScrollContainerComponent';
+import SearchInputComponent from 'src/components/search/SearchInputComponent';
+import VerticalLayoutComponent from 'src/components/VerticalLayoutComponent';
 import { WU } from 'src/constants/Layout';
 
 export default function SearchScreen() {

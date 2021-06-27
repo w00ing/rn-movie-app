@@ -2,7 +2,6 @@ import axios from 'axios';
 import dayjs from 'dayjs';
 import { Alert, Platform } from 'react-native';
 import * as RNLocalize from 'react-native-localize';
-
 import { currentBuildNo } from '../constants/buildNo';
 
 const BASEURL = 'https://api.themoviedb.org/3';
@@ -31,30 +30,15 @@ const defaultPublicHeaders = {
 };
 
 const onError = (e, url, method, data) => {
-  let errorMessage =
-    'An unknown error occurred.\nPlease contact the customer service.';
+  let errorMessage = 'An unknown error occurred.\nPlease contact the customer service.';
   if (e.response) {
-    devMode &&
-      console.log(
-        '[🔴 RES]',
-        method.toUpperCase(),
-        url,
-        data,
-        `message: ${e.message}`,
-      );
+    devMode && console.log('[🔴 RES]', method.toUpperCase(), url, data, `message: ${e.message}`);
 
     if (e.response?.data?.userMessage) {
       errorMessage = e.response.data.userMessage;
     }
   } else {
-    devMode &&
-      console.log(
-        '[🔴 RES]',
-        method.toUpperCase(),
-        url,
-        data,
-        `message: ${e.message}`,
-      );
+    devMode && console.log('[🔴 RES]', method.toUpperCase(), url, data, `message: ${e.message}`);
   }
 
   Alert.alert(null, errorMessage, [{ text: 'Confirm' }]);
@@ -67,11 +51,8 @@ const onError = (e, url, method, data) => {
 const sendRequest = (url, params, method, headers, isPrivate) => {
   const now = dayjs();
 
-  const defaultHeaders = isPrivate
-    ? defaultPrivateHeaders
-    : defaultPublicHeaders;
-  devMode &&
-    console.log(`[🟡 REQ ${Platform.OS}]`, method.toUpperCase(), url, params);
+  const defaultHeaders = isPrivate ? defaultPrivateHeaders : defaultPublicHeaders;
+  devMode && console.log(`[🟡 REQ ${Platform.OS}]`, method.toUpperCase(), url, params);
   return axios[method](BASEURL + url, {
     headers: { ...defaultHeaders, ...headers },
     params,
@@ -79,9 +60,7 @@ const sendRequest = (url, params, method, headers, isPrivate) => {
     .then((response) => {
       devMode &&
         console.log(
-          `[🟢 RES ${Platform.OS}] ${dayjs()
-            .diff(now, 'millisecond')
-            .toString()}`,
+          `[🟢 RES ${Platform.OS}] ${dayjs().diff(now, 'millisecond').toString()}`,
           method.toUpperCase(),
           url,
         );
@@ -94,11 +73,8 @@ const sendRequest = (url, params, method, headers, isPrivate) => {
 const sendRequestForData = (url, data, method, headers, isPrivate) => {
   const now = dayjs();
 
-  const defaultHeaders = isPrivate
-    ? defaultPrivateHeaders
-    : defaultPublicHeaders;
-  devMode &&
-    console.log(`[🟡 REQ ${Platform.OS}]`, method.toUpperCase(), url, data);
+  const defaultHeaders = isPrivate ? defaultPrivateHeaders : defaultPublicHeaders;
+  devMode && console.log(`[🟡 REQ ${Platform.OS}]`, method.toUpperCase(), url, data);
 
   return axios[method](BASEURL + url, data, {
     headers: { ...defaultHeaders, ...headers },
@@ -106,9 +82,7 @@ const sendRequestForData = (url, data, method, headers, isPrivate) => {
     .then((response) => {
       devMode &&
         console.log(
-          `[🟢 RES ${Platform.OS}] ${dayjs()
-            .diff(now, 'millisecond')
-            .toString()}`,
+          `[🟢 RES ${Platform.OS}] ${dayjs().diff(now, 'millisecond').toString()}`,
           method.toUpperCase(),
           url,
         );
@@ -120,21 +94,14 @@ const sendRequestForData = (url, data, method, headers, isPrivate) => {
 
 export const privateAPI = {
   get: (url, params, headers) => sendRequest(url, params, 'get', headers, true),
-  post: (url, data, headers) =>
-    sendRequestForData(url, data, 'post', headers, true),
-  put: (url, data, headers) =>
-    sendRequestForData(url, data, 'put', headers, true),
-  delete: (url, params, headers) =>
-    sendRequest(url, params, 'delete', headers, true),
+  post: (url, data, headers) => sendRequestForData(url, data, 'post', headers, true),
+  put: (url, data, headers) => sendRequestForData(url, data, 'put', headers, true),
+  delete: (url, params, headers) => sendRequest(url, params, 'delete', headers, true),
 };
 
 export const publicAPI = {
-  get: (url, params, headers) =>
-    sendRequest(url, params, 'get', headers, false),
-  post: (url, data, headers) =>
-    sendRequestForData(url, data, 'post', headers, false),
-  put: (url, data, headers) =>
-    sendRequestForData(url, data, 'put', headers, false),
-  delete: (url, params, headers) =>
-    sendRequest(url, params, 'delete', headers, false),
+  get: (url, params, headers) => sendRequest(url, params, 'get', headers, false),
+  post: (url, data, headers) => sendRequestForData(url, data, 'post', headers, false),
+  put: (url, data, headers) => sendRequestForData(url, data, 'put', headers, false),
+  delete: (url, params, headers) => sendRequest(url, params, 'delete', headers, false),
 };

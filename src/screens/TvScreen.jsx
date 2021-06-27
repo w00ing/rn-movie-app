@@ -1,26 +1,10 @@
-import React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import {
-  Alert,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  TouchableHighlight,
-  TouchableWithoutFeedback,
-  View,
-  Modal,
-  Button,
-  ActivityIndicator,
-} from 'react-native';
+import React, { useEffect, useState } from 'react';
 import { tvApi } from 'src/api/api';
 import HorizontalLayoutComponent from 'src/components/HorizontalLayoutComponent';
 import HorizontalSiderComponent from 'src/components/HorizontalSiderComponent';
 import ListComponent from 'src/components/ListComponent';
 import ScrollContainerComponent from 'src/components/ScrollContainerComponent';
 import VerticalLayoutComponent from 'src/components/VerticalLayoutComponent';
-import { LightColors, DarkColors } from 'src/constants/Colors';
 
 export default function TvScreen(props) {
   const [shows, setShows] = useState({

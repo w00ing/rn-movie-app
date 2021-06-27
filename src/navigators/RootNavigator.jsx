@@ -1,8 +1,7 @@
-import React, { useRef } from 'react';
-
 import { NavigationContainer } from '@react-navigation/native';
+import React, { useRef } from 'react';
 import StackNavigator from './StackNavigator';
-import TabNavigator from './TabNavigator';
+
 
 let devMode = false;
 devMode = true;

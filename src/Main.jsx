@@ -1,11 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { Appearance, AppearanceProvider } from 'react-native-appearance';
 import { Provider } from 'react-redux';
-import { Appearance, AppearanceProvider, useColorScheme } from 'react-native-appearance';
-
-import store from 'src/redux/store';
 import RootNavigator from 'src/navigators/RootNavigator';
+import store from 'src/redux/store';
 
 export default function Main() {
   const subscription = Appearance.addChangeListener(({ colorScheme }) => {

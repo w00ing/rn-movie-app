@@ -1,33 +1,14 @@
 import dayjs from 'dayjs';
-import _ from 'lodash';
+import * as WebBrowser from 'expo-web-browser';
 import numeral from 'numeral';
-import React from 'react';
-import { useLayoutEffect } from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import {
-  Alert,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  TouchableHighlight,
-  TouchableWithoutFeedback,
-  View,
-  Modal,
-  ActivityIndicator,
-  Image,
-} from 'react-native';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
+import { ActivityIndicator, Image, StyleSheet, Text, View } from 'react-native';
 import { apiImage, movieApi, tvApi } from 'src/api/api';
+import LinkComponent from 'src/components/detail/LinkComponent';
 import PosterComponent from 'src/components/PosterComponent';
 import ScrollContainerComponent from 'src/components/ScrollContainerComponent';
-import TitleComponent from 'src/components/TitleComponent';
 import VotesComponent from 'src/components/VotesComponent';
-import { LightColors, DarkColors } from 'src/constants/Colors';
 import { HEIGHT, WU } from 'src/constants/Layout';
-
-import * as WebBrowser from 'expo-web-browser';
-import LinkComponent from 'src/components/detail/LinkComponent';
 
 export default function DetailScreen({
   navigation,

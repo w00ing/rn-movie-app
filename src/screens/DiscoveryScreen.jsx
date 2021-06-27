@@ -1,31 +1,7 @@
-import React, { useEffect, useState, useRef } from 'react';
-import {
-  Alert,
-  Animated,
-  Button,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  TouchableHighlight,
-  ScrollView,
-  TouchableWithoutFeedback,
-  View,
-  PanResponder,
-  Modal,
-  ActivityIndicator,
-  Image,
-} from 'react-native';
-
-import _ from 'lodash';
-import numeral from 'numeral';
-import dayjs from 'dayjs';
-
-import { LightColors, DarkColors } from 'src/constants/Colors';
-import DefaultStyles from 'src/constants/DefaultStyles';
-import { WIDTH, HEIGHT, DEFAULT_MARGIN, WU } from 'src/constants/Layout';
+import React, { useEffect, useState } from 'react';
+import { Animated, Image, PanResponder, View } from 'react-native';
 import { apiImage, movieApi } from 'src/api/api';
-import PosterComponent from 'src/components/PosterComponent';
+import { HEIGHT, WIDTH, WU } from 'src/constants/Layout';
 
 export default function DiscoveryScreen(props) {
   const [topIndex, setTopIndex] = useState(0);

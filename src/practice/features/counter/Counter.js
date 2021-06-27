@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, TouchableOpacity, Text } from 'react-native';
-import { useSelector, useDispatch } from 'react-redux';
+import { Text, TouchableOpacity, View } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 import { decrement, increment } from './counterSlice';
 
 export function Counter() {

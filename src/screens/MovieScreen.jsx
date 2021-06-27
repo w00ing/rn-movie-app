@@ -1,33 +1,14 @@
-import React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import {
-  Alert,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  TouchableHighlight,
-  TouchableWithoutFeedback,
-  View,
-  Modal,
-  Button,
-  ScrollView,
-  ActivityIndicator,
-} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, View } from 'react-native';
 import Swiper from 'react-native-swiper/src';
-
 import { movieApi } from 'src/api/api';
 import HorizontalLayoutComponent from 'src/components/HorizontalLayoutComponent';
 import HorizontalSiderComponent from 'src/components/HorizontalSiderComponent';
 import ListComponent from 'src/components/ListComponent';
-import LoadingComponent from 'src/components/LoadingComponent';
 import MovieSlideComponent from 'src/components/movie/MovieSlideComponent';
 import ScrollContainerComponent from 'src/components/ScrollContainerComponent';
-import TitleComponent from 'src/components/TitleComponent';
 import VerticalLayoutComponent from 'src/components/VerticalLayoutComponent';
-import { LightColors, DarkColors } from 'src/constants/Colors';
-import { HEIGHT, WIDTH, WU } from 'src/constants/Layout';
+import { HEIGHT, WU } from 'src/constants/Layout';
 
 export default function MovieScreen(props) {
   const [movies, setMovies] = useState({

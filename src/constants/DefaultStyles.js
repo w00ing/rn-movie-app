@@ -1,4 +1,4 @@
-import { DEFAULT_MARGIN, WU } from './Layout';
+import { DEFAULT_MARGIN } from './Layout';
 
 export const Elevation = {
   boxShadow100: {

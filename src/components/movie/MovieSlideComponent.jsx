@@ -1,29 +1,11 @@
-import React, { useEffect, useState, useRef } from 'react';
-import {
-  Alert,
-  StyleSheet,
-  Text,
-  Button,
-  TextInput,
-  TouchableOpacity,
-  TouchableHighlight,
-  TouchableWithoutFeedback,
-  View,
-  Image,
-  Modal,
-  ActivityIndicator,
-} from 'react-native';
-
-import _, { maxBy } from 'lodash';
-import dayjs from 'dayjs';
-
+import { useNavigation } from '@react-navigation/native';
+import _ from 'lodash';
+import React from 'react';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { apiImage } from 'src/api/api';
-import { LightColors, DarkColors } from 'src/constants/Colors';
-import DefaultStyles from 'src/constants/DefaultStyles';
-import { HEIGHT, WIDTH, WU } from 'src/constants/Layout';
+import { WU } from 'src/constants/Layout';
 import PosterComponent from '../PosterComponent';
 import VotesComponent from '../VotesComponent';
-import { useNavigation } from '@react-navigation/native';
 
 export default function MovieSlideComponent({ id, name, overview, votes, bgImage, posterImage }) {
   const navigation = useNavigation();

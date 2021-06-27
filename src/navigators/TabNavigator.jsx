@@ -1,11 +1,10 @@
-import React, { useEffect, useLayoutEffect } from 'react';
-import { Platform } from 'react-native';
-import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
-
-import MovieScreen from 'src/screens/MovieScreen';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
+import React, { useLayoutEffect } from 'react';
+import { Platform } from 'react-native';
 import DiscoveryScreen from 'src/screens/DiscoveryScreen';
+import MovieScreen from 'src/screens/MovieScreen';
 import SearchScreen from 'src/screens/SearchScreen';
 import TvScreen from 'src/screens/TvScreen';
 

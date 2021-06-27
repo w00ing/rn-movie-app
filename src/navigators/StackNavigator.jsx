@@ -1,7 +1,7 @@
-import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import TabNavigator from './TabNavigator';
+import React from 'react';
 import DetailScreen from 'src/screens/DetailScreen';
+import TabNavigator from './TabNavigator';
 
 const Stack = createStackNavigator();
 
